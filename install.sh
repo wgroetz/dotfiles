@@ -11,4 +11,14 @@ ln -sf "$HOME/dotfiles/nvim/after" "$HOME/.config/nvim/"
 #########
 # sxhkd #
 #########
-ln -sf "$HOME/dotfiles/sxhkd" "$HOME/.config/sxhkd"
+ln -sf "$HOME/dotfiles/sxhkd" "$HOME/.config/"
+
+#########
+# bspwm #
+#########
+ln -sf "$HOME/dotfiles/bspwm" "$HOME/.config/"
+
+###########
+# polybar #
+###########
+ln -sf "$HOME/dotfiles/polybar" "$HOME/.config/"

@@ -2,3 +2,9 @@ This is going to be ugly, mostly just for myself in the future.
 
 Clipboard manager, Ubuntu doesn't have one by default I guess? :)
     xclip
+
+Font
+    JetBrains Mono
+    MaterialFonts
+
+
