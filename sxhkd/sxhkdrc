@@ -1,0 +1,58 @@
+#Web browser
+super + shift + f
+    firefox
+
+#Editor
+super + Return 
+    alacritty
+
+#Search open windows/new command
+super + {_,shift +}r
+    rofi -show {run,window}
+
+#Reload sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd
+
+#Power menu
+super + shift + Escape
+    rofi -show power-menu -modi power-menu:rofi-power-menu
+
+#bspwm keybinds
+
+# quit/restart bspwm
+super + alt + {q,r}
+    bspc {quit, wm -r}
+
+#close
+super + w
+    bspc node -c && bspc node -f last
+
+#Change focus/swap
+super + {_,shift +}{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+#Change workspace
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+super + ctrl + {h,l}
+    bspc desktop -f {prev,next}.occupied.local
+
+#Tiled and monocle layout
+super + m
+    bspc desktop -l next
+
+#Volume
+XF86AudioRaiseVolume
+    amixer -D pulse sset Master 5%+ unmute
+XF86AudioLowerVolume
+    amixer -D pulse sset Master 5%- unmute
+XF86AudioMute
+    amixer -D pulse sset Master toggle
+
+#Brightness
+XF86MonBrightnessDown 
+    brightnessctl s 10%-
+XF86MonBrightnessUp 
+    brightnessctl s 10%+
