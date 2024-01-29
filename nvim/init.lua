@@ -52,10 +52,43 @@ require("lazy").setup({
     	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     	-- install jsregexp (optional!).
     	build = "make install_jsregexp"
-    }
+    },
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'hrsh7th/nvim-cmp'},
+    {"lervag/vimtex"},
+})
+
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {'clangd', 'pyright'},
+  handlers = {
+    lsp_zero.default_setup,
+  },
 })
 
 local ls = require("luasnip")
+-- Load snippets from ~/.config/nvim/LuaSnip/
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip"})
+-- Setting LuaSnip config
+ls.setup({
+    store_selection_keys = "<Tab>",
+    update_events = {"TextChanged", "TextChangedI"},
+    enable_autosnippets = true,
+})
+
 vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
 vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
 vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
@@ -66,6 +99,5 @@ vim.keymap.set({"i", "s"}, "<C-E>", function()
 	end
 end, {silent = true})
 
--- Load snippets from ~/.config/nvim/LuaSnip/
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip"})
-
+vim.g.vimtex_view_method = "zathura"
+vim.keymap.set("n", "<leader>v", "<plug>(vimtex-view)")

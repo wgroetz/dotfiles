@@ -7,3 +7,9 @@ vim.api.nvim_buf_set_keymap(0, "i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u", {norem
 -- Messes with the formatting of the spelling mistakes
 vim.cmd("hi clear SpellBad")
 vim.cmd("hi SpellBad cterm=underline,bold ctermfg=red")
+vim.cmd("hi clear SpellCap")
+vim.cmd("hi SpellCap cterm=underline,bold ctermfg=green")
+vim.cmd("hi clear SpellRare")
+vim.cmd("hi SpellRare cterm=underline,bold ctermfg=blue")
+vim.cmd("hi clear SpellLocal")
+vim.cmd("hi SpellLocal cterm=underline,bold ctermfg=red")

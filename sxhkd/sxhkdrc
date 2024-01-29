@@ -39,9 +39,18 @@ super + bracket{left,right}
 super + ctrl + {h,l}
     bspc desktop -f {prev,next}.occupied.local
 
+#Send to workspace
+super + shift + {1-9,0}
+    bspc node -d '^{1-9, 10}'
+
 #Tiled and monocle layout
 super + m
     bspc desktop -l next
+
+#Monitor
+super + n 
+    xrandr --output HDMI-1 --same-as eDPI-1 --mode 1920x1080
+    && feh --bg-scale ~/Backgrounds/the-wind-rises.png
 
 #Volume
 XF86AudioRaiseVolume
